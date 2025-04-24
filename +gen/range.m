@@ -1,6 +1,6 @@
 function r = range(arr, dim)
 
-if nargin == 1, dim = 1; end
+if nargin == 1, dim = 'all'; end
 
 if isnumeric(dim)
     r = cat(dim,min(arr,[],dim), max(arr,[],dim));
