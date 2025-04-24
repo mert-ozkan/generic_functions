@@ -39,7 +39,7 @@ switch var_method
 
         var = iqr(arr, dim);
 
-    case 'robust std'
+    case 'std'
 
         if isempty(varargin)
             scalar = 1/1.349; % iqr calculated from normal standard deviation
@@ -56,8 +56,7 @@ end
 varargout = cell(1, nargout);
 varargout{1} = (arr - m) ./ var;
 
-if nargout > 1, varargout{2} = m; end
-if nargout > 2, varargout{3} = mad; end
+if nargout > 1, varargout{2} = var; end
 
 end
 
