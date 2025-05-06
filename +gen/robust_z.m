@@ -20,7 +20,7 @@ if nargin == 1 || isempty(dim)
 end
 
 
-m = median(arr, dim);
+m = median(arr, dim, 'omitnan');
 
 if nargin < 3
 
@@ -33,7 +33,7 @@ switch var_method
 
     case 'mad'
 
-        var = median(abs(arr - m), dim);
+        var = median(abs(arr - m), dim, 'omitnan');
 
     case 'iqr'
 
@@ -56,7 +56,8 @@ end
 varargout = cell(1, nargout);
 varargout{1} = (arr - m) ./ var;
 
-if nargout > 1, varargout{2} = var; end
+if nargout > 1, varargout{2} = m; end
+if nargout > 2, varargout{3} = var; end
 
 end
 
